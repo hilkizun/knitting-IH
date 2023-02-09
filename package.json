@@ -1,4 +1,12 @@
 {
+  "name": "knitting-ih",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon -e hbs,js,css app.js"
+  },
   "dependencies": {
     "bcrypt": "^5.1.0",
     "connect-mongo": "^4.6.0",
@@ -7,8 +15,25 @@
     "express-session": "^1.17.3",
     "hbs": "^4.2.0",
     "http-errors": "^2.0.0",
+    "mongoose": "^6.9.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20",
-    "passport": "^0.6.0"
-  }
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
+  },
+
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+ 
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hilkizun/knitting-IH.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hilkizun/knitting-IH/issues"
+  },
+  "homepage": "https://github.com/hilkizun/knitting-IH#readme"
 }
