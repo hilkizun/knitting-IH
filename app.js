@@ -6,6 +6,7 @@ const createError = require('http-errors');
 
 /* DB connection */
 require ('./config/db.config')
+require('./config/hbs.config.js');
 
 const app = express();
 
