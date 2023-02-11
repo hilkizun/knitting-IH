@@ -1,6 +1,9 @@
 const User = require('../models/User.model');
 const mongoose = require('mongoose');
 
+
+//SignUp
+
 module.exports.signup = (req, res, next) => {
   res.render('auth/signup')
 }
@@ -42,4 +45,14 @@ module.exports.doSignup = (req, res, next) => {
   } else {
     renderWithErrors({ password: 'Passwords don\'t match' })
   }
+}
+
+//Login
+
+module.exports.login = (req, res, next) => {
+  res.render('auth/login');
+}
+
+module.exports.doLogin = (req, res, next) => {
+  res.redirect('/login');
 }

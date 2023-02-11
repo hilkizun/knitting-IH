@@ -16,3 +16,5 @@ process.on('SIGINT', function () {
     process.exit(0);
   });
 });
+
+module.exports.MONGO_URL = MONGO_URL
