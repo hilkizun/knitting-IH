@@ -24,9 +24,9 @@ const router = require('./config/routes.config');
 app.use('/', router)
 
 /* Errors middlewares */
-app.use((req, res, next) => {
-  next(createError(404, 'Resource not found'));
-});
+// app.use((req, res, next) => {
+//   next(createError(404, 'Resource not found'));
+// });
 
 app.use((error, req, res, next) => {
   console.log(error)
