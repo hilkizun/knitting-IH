@@ -65,6 +65,7 @@ const doLoginWithStrategy = (req, res, next, strategy = 'local-auth') => {
   }
 
   passport.authenticate(strategy, (err, user, validations) => {
+    console.log(user)
     if (err) {
       next(err)
     } else if (!user) {

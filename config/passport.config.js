@@ -56,7 +56,9 @@ passport.use('google-auth', new GoogleStrategy(
   (accessToken, refreshToken, profile, next) => {
     const googleID = profile.id;
     const name = profile.displayName;
-    const email = profile.emails && profile.emails[0].value || undefined
+    const given_name = profile.name.givenName;
+    const family_name = profile.name.familyName;
+    const email = profile.emails && profile.emails[0].value || undefined;
 
     if (googleID && email) {
       User.findOne({ $or: [
@@ -69,7 +71,9 @@ passport.use('google-auth', new GoogleStrategy(
           } else {
             // Crear uno nuevo
             return User.create({
-              name,
+              userName: name,
+              firstName: given_name,
+              lastName: family_name,
               email,
               password: mongoose.Types.ObjectId(),
               googleID

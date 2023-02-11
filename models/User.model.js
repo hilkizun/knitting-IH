@@ -7,10 +7,9 @@ const EMAIL_PATTERN =
 
 const userSchema = new mongoose.Schema(
   {
-    username: {
+    userName: {
       type: String,
       required: [true, 'User name is required'],
-      unique: [true, 'User name is already in use'],
     },
     firstName: {
       type: String,
