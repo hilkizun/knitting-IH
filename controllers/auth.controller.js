@@ -1,5 +1,7 @@
 const User = require('../models/User.model');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const { GENERIC_ERROR_MESSAGE } = require('../config/passport.config');
 
 
 //SignUp
@@ -53,6 +55,42 @@ module.exports.login = (req, res, next) => {
   res.render('auth/login');
 }
 
+const doLoginWithStrategy = (req, res, next, strategy = 'local-auth') => {
+  const { email, password } = req.body;
+  if (strategy === 'local-auth') {
+
+    if (!email || !password) {
+      res.status(404).render('auth/login', { errorMessage: GENERIC_ERROR_MESSAGE })
+    }
+  }
+
+  passport.authenticate(strategy, (err, user, validations) => {
+    console.log(user)
+    if (err) {
+      next(err)
+    } else if (!user) {
+      res.status(404).render('auth/login', { user: { email }, errorMessage: validations.error })
+    } else {
+      req.login(user, (loginError) => {
+        if (loginError) {
+          next(loginError)
+        } else {
+          res.redirect('/products');
+        }
+      })
+    }
+  })(req, res, next)
+}
+
 module.exports.doLogin = (req, res, next) => {
-  res.redirect('/login');
+  doLoginWithStrategy(req, res, next)
+}
+
+module.exports.doLoginGoogle = (req, res, next) => {
+  doLoginWithStrategy(req, res, next, 'google-auth')
+}
+
+module.exports.doLogout = (req, res, next) => {
+  req.session.destroy();
+  res.redirect('/login')
 }

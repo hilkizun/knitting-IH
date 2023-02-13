@@ -5,30 +5,8 @@
   <div class="mb-3">
     <label for="email" class="form-label">Email</label>
     <input value="{{user.email}}" type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" name="email" aria-describedby="emailHelp" required>
-    <div id="emailHelp" class="form-text">Esta cuenta ya está en uso</div>
     <div class="invalid-feedback">
       {{errors.email}}
-    </div>
-  </div>
-  <div class="mb-3">
-    <label for="username" class="form-label">Nombre de usuario</label>
-    <input value="{{user.username}}" class="form-control {{#if errors.username}}is-invalid{{/if}}" id="username" name="username" required>
-    <div class="invalid-feedback">
-      {{errors.username}}
-    </div>
-  </div>
-  <div class="mb-3">
-    <label for="firstName" class="form-label">Nombre</label>
-    <input value="{{user.firstName}}" class="form-control {{#if errors.firstName}}is-invalid{{/if}}" id="firstName" name="firstName" required>
-    <div class="invalid-feedback">
-      {{errors.firstName}}
-    </div>
-  </div>
-  <div class="mb-3">
-    <label for="lastName" class="form-label">Apellidos</label>
-    <input value="{{user.lastName}}" class="form-control {{#if errors.lastName}}is-invalid{{/if}}" id="lastName" name="lastName" required>
-    <div class="invalid-feedback">
-      {{errors.lastName}}
     </div>
   </div>
   <div class="mb-3">
@@ -43,4 +21,5 @@
      <input type="password" class="form-control" id="repeat-password" name="repeatPassword" required>
   </div>
   <button type="submit" class="btn btn-primary">Crea tu cuenta</button>
+  <a href="/login/google" class="btn btn-outline-primary">Iniciar sesión con Google</a>
 </form>

@@ -7,18 +7,14 @@ const EMAIL_PATTERN =
 
 const userSchema = new mongoose.Schema(
   {
-    username: {
-      type: String,
-      required: [true, 'User name is required'],
-      unique: [true, 'User name is already in use'],
+    userName: {
+      type: String
     },
     firstName: {
       type: String,
-      required: [true, 'First name is required']
     },
     lastName: {
       type: String,
-      required: [true, 'Last name is required']
     },
     email: {
       type: String,
@@ -31,6 +27,23 @@ const userSchema = new mongoose.Schema(
       required: [true, 'Password is required'],
       minlength: [8, 'Your password must have at least 8 characters']
     },
+    googleID: {
+      type: String
+    },
+    location: {
+      address: String,
+      number: Number,
+      additionalInfo: String,
+      city: String,
+      zip: Number,
+      country: String
+    },
+    birthdate: {
+      type: Date
+    },
+    image: {
+      type: String
+    }
   },
   {
     timestamps: true,
