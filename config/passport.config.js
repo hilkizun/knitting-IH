@@ -61,29 +61,39 @@ passport.use('google-auth', new GoogleStrategy(
     const email = profile.emails && profile.emails[0].value || undefined;
 
     if (googleID && email) {
-      User.findOne({ $or: [
-        { email },
-        { googleID }
-      ]})
-        .then(user => {
-          if (user) {
-            next(null, user)
-          } else {
-            // Crear uno nuevo
-            return User.create({
-              userName: name,
-              firstName: given_name,
-              lastName: family_name,
-              email,
-              password: mongoose.Types.ObjectId(),
-              googleID
-            })
-              .then(userCreated => {
-                next(null, userCreated)
-              })
-          }
+      User.findOne({ email })
+  .then(user => {
+    if (user) {
+      if (user.googleID) {
+        // El usuario ya está conectado con Google
+        next(null, user)
+      } else {
+        // Actualizar usuario con el nuevo Google ID
+        User.findOneAndUpdate(
+          { email },
+          { $set: { googleID } },
+          { new: true }
+        )
+        .then(updatedUser => {
+          next(null, updatedUser)
         })
-        .catch(err => next(err))
+      }
+    } else {
+      // Crear uno nuevo
+      User.create({
+        userName: name,
+        firstName: given_name,
+        lastName: family_name,
+        email,
+        password: mongoose.Types.ObjectId(),
+        googleID
+      })
+      .then(userCreated => {
+        next(null, userCreated)
+      })
+    }
+  })
+  .catch(err => next(err))
     } else {
       next(null, false, { error: 'Error connecting with Google Auth' })
     }

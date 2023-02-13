@@ -5,14 +5,13 @@
   <div class="mb-3">
     <label for="email" class="form-label">Email</label>
     <input value="{{user.email}}" type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" name="email" aria-describedby="emailHelp" required>
-    <div id="emailHelp" class="form-text">Esta cuenta ya está en uso</div>
     <div class="invalid-feedback">
       {{errors.email}}
     </div>
   </div>
   <div class="mb-3">
     <label for="username" class="form-label">Nombre de usuario</label>
-    <input value="{{user.username}}" class="form-control {{#if errors.username}}is-invalid{{/if}}" id="username" name="username" required>
+    <input value="{{user.username}}" class="form-control {{#if errors.username}}is-invalid{{/if}}" id="userName" name="userName" required>
     <div class="invalid-feedback">
       {{errors.username}}
     </div>
