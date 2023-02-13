@@ -10,27 +10,6 @@
     </div>
   </div>
   <div class="mb-3">
-    <label for="username" class="form-label">Nombre de usuario</label>
-    <input value="{{user.username}}" class="form-control {{#if errors.username}}is-invalid{{/if}}" id="userName" name="userName" required>
-    <div class="invalid-feedback">
-      {{errors.username}}
-    </div>
-  </div>
-  <div class="mb-3">
-    <label for="firstName" class="form-label">Nombre</label>
-    <input value="{{user.firstName}}" class="form-control {{#if errors.firstName}}is-invalid{{/if}}" id="firstName" name="firstName" required>
-    <div class="invalid-feedback">
-      {{errors.firstName}}
-    </div>
-  </div>
-  <div class="mb-3">
-    <label for="lastName" class="form-label">Apellidos</label>
-    <input value="{{user.lastName}}" class="form-control {{#if errors.lastName}}is-invalid{{/if}}" id="lastName" name="lastName" required>
-    <div class="invalid-feedback">
-      {{errors.lastName}}
-    </div>
-  </div>
-  <div class="mb-3">
     <label for="password" class="form-label">Contraseña</label>
     <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" name="password" required>
     <div class="invalid-feedback">

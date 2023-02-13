@@ -20,7 +20,7 @@ router.post('/signup', authMiddleware.isNotAuthenticated, authController.doSignu
 router.get('/login', authMiddleware.isNotAuthenticated, authController.login);
 router.post('/login', authMiddleware.isNotAuthenticated, authController.doLogin);
 
-router.get('/login/google', passport.authenticate('google-auth', { scope: GOOGLE_SCOPES }))
+router.get('/login/google', passport.authenticate('google-auth', { scope: GOOGLE_SCOPES, prompt: 'select_account' }))
 router.get('/auth/google/callback', authController.doLoginGoogle)
 
 router.get('/logout', authMiddleware.isAuthenticated, authController.doLogout)

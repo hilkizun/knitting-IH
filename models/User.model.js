@@ -12,11 +12,9 @@ const userSchema = new mongoose.Schema(
     },
     firstName: {
       type: String,
-      required: [true, 'First name is required']
     },
     lastName: {
       type: String,
-      required: [true, 'Last name is required']
     },
     email: {
       type: String,
@@ -30,6 +28,20 @@ const userSchema = new mongoose.Schema(
       minlength: [8, 'Your password must have at least 8 characters']
     },
     googleID: {
+      type: String
+    },
+    location: {
+      address: String,
+      number: Number,
+      additionalInfo: String,
+      city: String,
+      zip: Number,
+      country: String
+    },
+    birthdate: {
+      type: Date
+    },
+    image: {
       type: String
     }
   },

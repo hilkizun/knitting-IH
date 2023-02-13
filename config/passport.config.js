@@ -24,13 +24,13 @@ passport.use('local-auth', new LocalStrategy(
     passwordField: 'password'
   },
   (email, password, next) => {
-   
+
     User.findOne({ email })
       .then(user => {
         if (!user) {
           next(null, false, { error: GENERIC_ERROR_MESSAGE })
         } else {
-   
+
           return user.checkPassword(password)
             .then(match => {
               if (!match) {
@@ -55,45 +55,58 @@ passport.use('google-auth', new GoogleStrategy(
   },
   (accessToken, refreshToken, profile, next) => {
     const googleID = profile.id;
-    const name = profile.displayName;
+    const image = profile.picture;
     const given_name = profile.name.givenName;
     const family_name = profile.name.familyName;
     const email = profile.emails && profile.emails[0].value || undefined;
 
     if (googleID && email) {
+      console.log(profile)
       User.findOne({ email })
-  .then(user => {
-    if (user) {
-      if (user.googleID) {
-        // El usuario ya está conectado con Google
-        next(null, user)
-      } else {
-        // Actualizar usuario con el nuevo Google ID
-        User.findOneAndUpdate(
-          { email },
-          { $set: { googleID } },
-          { new: true }
-        )
-        .then(updatedUser => {
-          next(null, updatedUser)
+        .then(user => {
+          if (user) {
+            if (user.googleID) {
+              // El usuario ya está conectado con Google
+              next(null, user)
+            } else {
+              // Actualizar usuario con el nuevo Google ID
+              User.findOneAndUpdate(
+                { email },
+                { $set: { googleID } },
+                { new: true }
+              )
+                .then(updatedUser => {
+                  next(null, updatedUser)
+                })
+            }
+          } else {
+            // Crear uno nuevo
+            User.create({
+              firstName: given_name,
+              lastName: family_name,
+              email,
+              password: mongoose.Types.ObjectId(),
+              googleID,
+              image: image,
+
+    //           location: {
+    //   address: String,
+    //   number: Number,
+    //   additionalInfo: String,
+    //   city: String,
+    //   zip: Number,
+    //   country: String
+    // },
+    // birthdate: {
+    //   type: Date
+    // }
+            })
+              .then(userCreated => {
+                next(null, userCreated)
+              })
+          }
         })
-      }
-    } else {
-      // Crear uno nuevo
-      User.create({
-        userName: name,
-        firstName: given_name,
-        lastName: family_name,
-        email,
-        password: mongoose.Types.ObjectId(),
-        googleID
-      })
-      .then(userCreated => {
-        next(null, userCreated)
-      })
-    }
-  })
-  .catch(err => next(err))
+        .catch(err => next(err))
     } else {
       next(null, false, { error: 'Error connecting with Google Auth' })
     }
