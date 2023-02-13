@@ -75,7 +75,7 @@ const doLoginWithStrategy = (req, res, next, strategy = 'local-auth') => {
         if (loginError) {
           next(loginError)
         } else {
-          res.redirect('/timeline');
+          res.redirect('/products');
         }
       })
     }
@@ -88,4 +88,9 @@ module.exports.doLogin = (req, res, next) => {
 
 module.exports.doLoginGoogle = (req, res, next) => {
   doLoginWithStrategy(req, res, next, 'google-auth')
+}
+
+module.exports.doLogout = (req, res, next) => {
+  req.session.destroy();
+  res.redirect('/login')
 }
