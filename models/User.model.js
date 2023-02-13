@@ -66,7 +66,14 @@ userSchema.pre('save', function(next) {
 
 userSchema.methods.checkPassword = function(passwordToCompare) {
   return bcrypt.compare(passwordToCompare, this.password);
-}
+};
+
+userSchema.virtual('likes', {
+  ref: 'Like',
+  foreignField: 'user',
+  localField: '_id',
+  justOne: false
+});
 
 const User = mongoose.model('User', userSchema);
 
