@@ -3,3 +3,16 @@
 {{else}}
 <h1 class="text-primary">Encuentra tu proyecto</h1>
 {{/if}}
+
+<a href="/products/new-product"> Crea un proyecto </a>
+
+<ul>
+{{#each products as |product|}}
+<li>
+    <a href="/products/{{product.id}}/detail"> {{product.productName}} </a>
+
+</li>
+{{else}}
+<p>No hay proyectos que mostrar</p>
+{{/each}}
+</ul>
