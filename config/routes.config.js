@@ -27,6 +27,9 @@ router.get('/auth/google/callback', authController.doLoginGoogle)
 router.get('/logout', authMiddleware.isAuthenticated, authController.doLogout)
 
 //User
+router.get('/profile', authMiddleware.isAuthenticated, userController.profile);
+
+
 router.get('/products', userController.products);
 
 //Create products

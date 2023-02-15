@@ -42,7 +42,8 @@ const userSchema = new mongoose.Schema(
       type: Date
     },
     image: {
-      type: String
+      type: String,
+      default: 'https://picsum.photos/200/300?random=1'
     }
   },
   {
