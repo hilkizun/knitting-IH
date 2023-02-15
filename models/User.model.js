@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema(
     },
     image: {
       type: String,
-      default: 'https://picsum.photos/200/300?random=1'
+      default: 'https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg'
     }
   },
   {
