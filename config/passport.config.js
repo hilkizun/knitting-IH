@@ -55,13 +55,13 @@ passport.use('google-auth', new GoogleStrategy(
   },
   (accessToken, refreshToken, profile, next) => {
     const googleID = profile.id;
-    const image = profile.picture;
     const given_name = profile.name.givenName;
     const family_name = profile.name.familyName;
     const email = profile.emails && profile.emails[0].value || undefined;
+    const image = profile.photos && profile.photos[0].value || undefined;
+
 
     if (googleID && email) {
-      console.log(profile)
       User.findOne({ email })
         .then(user => {
           if (user) {
@@ -87,7 +87,7 @@ passport.use('google-auth', new GoogleStrategy(
               email,
               password: mongoose.Types.ObjectId(),
               googleID,
-              image: image,
+              image,
 
     //           location: {
     //   address: String,

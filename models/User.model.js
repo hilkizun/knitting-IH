@@ -42,7 +42,8 @@ const userSchema = new mongoose.Schema(
       type: Date
     },
     image: {
-      type: String
+      type: String,
+      default: 'https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg'
     }
   },
   {
@@ -66,7 +67,14 @@ userSchema.pre('save', function(next) {
 
 userSchema.methods.checkPassword = function(passwordToCompare) {
   return bcrypt.compare(passwordToCompare, this.password);
-}
+};
+
+userSchema.virtual('likes', {
+  ref: 'Like',
+  foreignField: 'user',
+  localField: '_id',
+  justOne: false
+});
 
 const User = mongoose.model('User', userSchema);
 

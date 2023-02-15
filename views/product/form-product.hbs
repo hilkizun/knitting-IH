@@ -1,0 +1,40 @@
+
+{{#if editing}}
+  <h1 class="text-primary">Edita el proyecto</h1>
+  <h3 class="">¡Actualiza tu proyecto de forma sencilla!</h3>
+{{else}}
+  <h1 class="text-primary">Crea tu proyecto</h1>
+  <h3 class="">¡Crea tu proyecto, vende el patrón, el...!</h3>
+{{/if}}
+
+{{#if editing}}
+<form action="/products/{{product.id}}/edit" method="POST">
+{{else}}
+<form action="/products/new-product" method="POST">
+{{/if}}
+
+
+  <div class="mb-3">
+    <label for="productName" class="form-label">Nombre del proyecto</label>
+    <input value="{{product.productName}}" type="productName" class="form-control {{#if errors.productName}}is-invalid{{/if}}" id="productName" name="productName" aria-describedby="productNameHelp" required>
+    <div class="invalid-feedback">
+      {{errors.productName}}
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Detalle del producto</label>
+    <input value="{{product.description}}" class="form-control {{#if errors.description}}is-invalid{{/if}}" id="description" name="description" required>
+    <div class="invalid-feedback">
+      {{errors.description}}
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="image" class="form-label">Imagen</label>
+    <input value="{{product.image}}" class="form-control {{#if errors.image}}is-invalid{{/if}}" id="image" name="image" required>
+    <div class="invalid-feedback">
+      {{errors.image}}
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Crea tu proyecto</button>
+</form>
