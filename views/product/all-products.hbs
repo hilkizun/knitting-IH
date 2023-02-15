@@ -1,18 +1,22 @@
 {{#if currentUser}}
-<h1 class="text-primary">Recomendados para tí</h1>
+  <h1 class="text-primary">Recomendados para tí</h1>
 {{else}}
-<h1 class="text-primary">Encuentra tu proyecto</h1>
+  <h1 class="text-primary">Encuentra tu proyecto</h1>
 {{/if}}
 
 <a href="/products/new-product"> Crea un proyecto </a>
 
 <ul>
-{{#each products as |product|}}
-<li>
-    <a href="/products/{{product.id}}/detail"> {{product.productName}} </a>
-
-</li>
-{{else}}
-<p>No hay proyectos que mostrar</p>
-{{/each}}
+  {{#each products as |product|}}
+    <li>
+      <a href="/products/{{product.id}}/detail"> {{product.productName}} </a>
+      <form action="/products/{{product.id}}/delete" method="POST">
+        <button class="btn btn-danger" type="submit">
+          Delete
+        </button>
+      </form>
+    </li>
+  {{else}}
+    <p>No hay proyectos que mostrar</p>
+  {{/each}}
 </ul>
