@@ -1,0 +1,24 @@
+<h1>Hello {{currentUser.firstName}}</h1>
+
+<form action="/profile/{{user.id}}/edit" method="POST">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input value="{{user.email}}" type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" name="email" aria-describedby="emailHelp" required>
+    <div class="invalid-feedback">
+      {{errors.email}}
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Contraseña</label>
+    <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" name="password" required>
+    <div class="invalid-feedback">
+      {{errors.password}}
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="repeat-password" class="form-label">Repite contraseña</label>
+     <input type="password" class="form-control" id="repeat-password" name="repeatPassword" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Crea tu cuenta</button>
+  <a href="/login/google" class="btn btn-outline-primary">Iniciar sesión con Google</a>
+</form>
