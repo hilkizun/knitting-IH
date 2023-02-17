@@ -5,9 +5,6 @@ module.exports.profile = (req, res, next) => {
   res.render("user/profile");
 };
 
-module.exports.viewProfile = (req, res, next) => {
-  res.render("user/view-profile");
-};
 
 module.exports.products = (req, res, next) => {
   //res.render('product/all-products');

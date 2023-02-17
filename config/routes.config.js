@@ -28,7 +28,6 @@ router.get('/logout', authMiddleware.isAuthenticated, authController.doLogout)
 
 //User
 router.get('/profile', authMiddleware.isAuthenticated, userController.profile);
-router.get('/profile/:id', authMiddleware.isAuthenticated, userController.viewProfile);
 router.get('/profile/:id/edit', authMiddleware.isAuthenticated, userController.edit);
 router.post('/profile/:id/edit', authMiddleware.isAuthenticated, userController.doEdit);
 

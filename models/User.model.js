@@ -49,10 +49,6 @@ const userSchema = new mongoose.Schema(
       type: Number,
       
     },
-    socilaMedia: {
-      type: String,
-      
-    }
   },
   {
     timestamps: true,
