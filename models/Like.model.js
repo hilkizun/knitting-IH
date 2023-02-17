@@ -8,7 +8,7 @@ const likeSchema = new mongoose.Schema(
         required: [true, 'No puedes dar like si no estás registrado']
       },
       product: {
-        type:mongoose.type.ObjectId,
+        type:mongoose.Types.ObjectId,
         ref: 'Product',
         required: true,
       },
@@ -21,6 +21,6 @@ const likeSchema = new mongoose.Schema(
     }
   );
 
-const like = mongoose.model('like', likeSchema);
+const Like = mongoose.model('Like', likeSchema);
 
-module.exports = like;
+module.exports = Like;
