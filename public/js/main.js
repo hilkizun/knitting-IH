@@ -24,5 +24,3 @@ window.onload = () => {
     })
   }
   
-  // bi-heart-fill
-  // bi-heart

@@ -9,7 +9,7 @@ module.exports.products = (req, res, next) => {
     //res.render('product/all-products');
     Product.find()
       .populate('user')
-      .polulate('likes')
+      .populate('likes')
       .then(products => {
       res.render('product/all-products', { products });
     })
