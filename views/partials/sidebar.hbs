@@ -1,33 +1,24 @@
-
 <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white" style="width: 600px">
-    <div class="position-sticky">
-      <div class="list-group list-group-flush mx-3 mt-4">
-        <a
-          href="#descubre"
-          class="list-group-item list-group-item-action py-2 ripple"
-          aria-current="true"
-        >
-         <span>Descubre ...</span>
-        </a>
-        <a href="#guardados" class="list-group-item list-group-item-action py-2 ripple ">
-         <span>Guardados</span>
-        </a>
-        <a href="#venta" class="list-group-item list-group-item-action py-2 ripple">
-          <span>En venta</span></a
-        >
-        <a href="#comprados" class="list-group-item list-group-item-action py-2 ripple"
-          ><span>Comprados</span></a
-        >
-        <a href="/products/new-product" class="list-group-item list-group-item-action py-2 ripple">
-         <span>Añadir artículo</span>
-        </a>
-        <a href="/profile/{{user.id}}/edit" class="list-group-item list-group-item-action py-2 ripple"
-          ><span>Editar perfil</span></a
-        >
-        <a href="/logout" class="list-group-item list-group-item-action py-2 ripple"
-          ><span>Cerrar sesión</span></a
-        >
-        
-      </div>
+  <div class="position-sticky">
+    <div class="list-group list-group-flush mx-3 mt-4">
+      <a href="#descubre" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+        <span>Descubre ...</span>
+      </a>
+      <a href="#guardados" class="list-group-item list-group-item-action py-2 ripple ">
+        <span>Guardados</span>
+      </a>
+      <a href="#venta" class="list-group-item list-group-item-action py-2 ripple">
+        <span>En venta</span></a>
+      <a href="#comprados" class="list-group-item list-group-item-action py-2 ripple"><span>Comprados</span></a>
+      <a href="/products/new-product" class="list-group-item list-group-item-action py-2 ripple">
+        <span>Añadir artículo</span>
+      </a>
+      <a href="/profile/{{currentUser.id}}" class="list-group-item list-group-item-action py-2 ripple"><span>Tu
+          perfil</span></a>
+      <a href="/profile/{{currentUser.id}}/edit" class="list-group-item list-group-item-action py-2 ripple"><span>Editar
+          perfil</span></a>
+      <a href="/logout" class="list-group-item list-group-item-action py-2 ripple"><span>Cerrar sesión</span></a>
+
     </div>
-  </nav>
+  </div>
+</nav>

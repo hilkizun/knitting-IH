@@ -1,24 +1,23 @@
 <i class="bi bi-house"></i>
-        Hello {{currentUser.firstName}}
- 
+Hello {{currentUser.firstName}}
+
 <div class="d-flex ">
-{{> sidebar}}
-<section class="border border-bottom-0 border-top-0 w-100 p-4">
+  {{> sidebar }}
+  <section class="border border-bottom-0 border-top-0 w-100 p-4">
 
     <h1 id="descubre">Descubre....</h1>
     <h1 id="guardados">Guardados</h1>
     <h1 id="venta">En venta</h1>
     <h1 id="comprados">Comprados</h1>
 
-{{!-- {{#each products as |product|}}
+    {{!-- {{#each products as |product|}}
     <li>
       <a href="/products/{{product.id}}/detail"> {{product.productName}} </a>
-    
+
     </li>
-  {{else}}
+    {{else}}
     <p>No hay proyectos que mostrar</p>
-  {{/each}} --}}
+    {{/each}} --}}
 
   </section>
 </div>
-
