@@ -17,6 +17,8 @@ window.onload = () => {
               iconNode.classList.remove('bi-heart-fill');
             }
           })
+
+          /// hay que sumar +1 y eliminar
           .catch((err) => {
             console.error(err)
           })
