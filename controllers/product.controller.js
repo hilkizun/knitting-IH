@@ -11,8 +11,6 @@ module.exports.doCreate = (req, res, next) => {
         user:req.user.id
     }
 
-    console.log(newProduct)
-
     Product.create(newProduct)
         .then(product => {
             res.redirect('/products')

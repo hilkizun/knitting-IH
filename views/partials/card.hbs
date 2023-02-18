@@ -8,8 +8,8 @@
       <p class="card-text">Price: ${{ product.pattern.price }}</p>
     </div>
   <div class="d-flex align-items-center" style="margin-left: 60px;">
-    {{#isOwner currentUser=currentUser currentUserId=product.user._id}}
-      <form class="m-0" action="/products/{{productId}}/delete" method="POST">
+    {{#isOwner currentUser=currentUser product=product}}
+      <form class="m-0" action="/products/{{product.id}}/delete" method="POST">
         <button class="btn text-danger" type="submit">
           <i class="bi bi-trash3-fill"></i>
         </button>
