@@ -3,8 +3,9 @@ const Like = require('../models/Like.model')
 const User = require("../models/User.model");
 
 module.exports.profile = (req, res, next) => {
-  res.render('user/profile')
-}
+  res.render("user/profile");
+};
+
 
 module.exports.products = (req, res, next) => {
     //res.render('product/all-products');
