@@ -26,7 +26,6 @@ module.exports.edit = (req, res, next) => {
 };
 
 module.exports.doEdit = (req, res, next) => {
-  console.log("vista", req.params.id, req.body)
   User.findByIdAndUpdate(req.params.id, req.body)
 
     .then((user) => {
