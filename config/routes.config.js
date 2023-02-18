@@ -38,6 +38,10 @@ router.get('/products/new-product', authMiddleware.isAuthenticated, productContr
 router.post('/products/new-product', authMiddleware.isAuthenticated, productController.doCreate)
 router.post('/products/:id/delete', authMiddleware.isAuthenticated, productController.delete)
 
+//Likes
+router.post('/products/:id/like', authMiddleware.isAuthenticated, userController.like);
+
+
 router.get('/products/:id/detail', productController.detail)
 
 module.exports = router;

@@ -16,6 +16,9 @@
         </button>
       </form>
     </li>
+
+    {{> card product=product currentUser=../currentUser}}
+
   {{else}}
     <p>No hay proyectos que mostrar</p>
   {{/each}}
