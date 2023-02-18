@@ -1,0 +1,71 @@
+<h1> {{user.userName}} edita tu perfil</h1>
+
+<form action="/profile/{{currentUser.id}}/edit" method="POST">
+  <div class="mb-3">
+    <label for="userName" class="form-label">Nombre Usuario</label>
+    <input value="{{user.userName}}" type="text" class="form-control" id="userName" name="userName">
+  </div>
+
+    <div class="mb-3">
+    <label for="image" class="form-label">Foto de perfil</label>
+    <input value="{{user.image}}" type="text" class="form-control" id="image" name="image">
+  </div>
+
+  <div class="mb-3">
+    <label for="firstName" class="form-label">Nombre</label>
+    <input value="{{user.firstName}}" type="text" class="form-control" id="firstName" name="firstName">
+  </div>
+
+  <div class="mb-3">
+    <label for="lastName" class="form-label">Apellidos</label>
+    <input value="{{user.lastName}}" type="text" class="form-control" id="lastName" name="lastName">
+  </div>
+
+  <div class="mb-3">
+    <label for="birthdate" class="form-label">Nacimiento</label>
+    <input value="{{user.birthdate}}" type="datetime" class="form-control" id="birthdate" name="birthdate">
+  </div>
+
+  <div class="mb-3">
+    <label for="telephone" class="form-label">Teléfono</label>
+    <input value="{{user.telephone}}" type="number" class="form-control" id="telephone" name="telephone">
+  </div>
+
+  <div class="mb-3">
+    <label for="address" class="form-label">Dirección</label>
+    <input value="{{user.location.address}}" type="text" class="form-control" id="address" name="location.address">
+  </div>
+
+  <div class="mb-3">
+    <label for="number" class="form-label">Número</label>
+    <input value="{{user.location.number}}" type="number" class="form-control" id="number" name="location.number">
+  </div>
+
+  <div class="mb-3">
+    <label for="city" class="form-label">Ciudad</label>
+    <input value="{{user.location.city}}" type="text" class="form-control" id="city" name="location.city">
+  </div>
+
+  <div class="mb-3">
+    <label for="zip" class="form-label">Código postal</label>
+    <input value="{{user.location.zip}}" type="text" class="form-control" id="zip" name="location.zip">
+  </div>
+
+  <div class="mb-3">
+    <label for="country" class="form-label">País</label>
+    <input value="{{user.location.country}}" type="text" class="form-control" id="country" name="location.country">
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input value="{{user.email}}" type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email"
+      name="email" aria-describedby="emailHelp" disabled>
+    <div class="invalid-feedback">
+      {{errors.email}}
+    </div>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">Edita tu perfil</button>
+
+</form>
